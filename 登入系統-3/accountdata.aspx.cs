@@ -26,32 +26,32 @@ public partial class accountdata : System.Web.UI.Page
     {
         //DataSet ds = new DataSet();
 
-        //SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Database.mdf;Integrated Security=True");
-        //conn.Open();
-        ////SqlDataAdapter da = new SqlDataAdapter("Select * From Test",conn);
-        //SqlCommand cmd = new SqlCommand("Select * From Test", conn);
-        //SqlDataReader dr = cmd.ExecuteReader();
-
-        //DataTable dt = new DataTable(); //使用DataTable來儲存資料
-        //dt.Load(dr);
-        //GridView2.DataSource = dt;
-        ////GridView2.Columns.Add();
-        //GridView2.DataBind();
-        //conn.Close();
-        //conn.Dispose();
-        //cmd.Dispose();
-
-        SqlConnection conn = new SqlConnection("Data Source=10.8.28.239;Initial Catalog=SnManage;Persist Security Info=True;User ID=VRMA;Password=vrma2016");
+        SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Database.mdf;Integrated Security=True");
         conn.Open();
-        SqlCommand cmd = new SqlCommand("Select * From SnManage.dbo.CheckingCategory", conn);
+        //SqlDataAdapter da = new SqlDataAdapter("Select * From Test",conn);
+        SqlCommand cmd = new SqlCommand("Select * From Test", conn);
         SqlDataReader dr = cmd.ExecuteReader();
-        DataTable dt = new DataTable();
+
+        DataTable dt = new DataTable(); //使用DataTable來儲存資料
         dt.Load(dr);
         GridView2.DataSource = dt;
+        //GridView2.Columns.Add();
         GridView2.DataBind();
         conn.Close();
         conn.Dispose();
         cmd.Dispose();
+
+        //SqlConnection conn = new SqlConnection("Data Source=10.8.28.239;Initial Catalog=SnManage;Persist Security Info=True;User ID=VRMA;Password=vrma2016");
+        //conn.Open();
+        //SqlCommand cmd = new SqlCommand("Select * From SnManage.dbo.CheckingCategory", conn);
+        //SqlDataReader dr = cmd.ExecuteReader();
+        //DataTable dt = new DataTable();
+        //dt.Load(dr);
+        //GridView2.DataSource = dt;
+        //GridView2.DataBind();
+        //conn.Close();
+        //conn.Dispose();
+        //cmd.Dispose();
     }
 
     protected void Button1_Click(object sender, EventArgs e)//新增BUTTON
@@ -458,5 +458,23 @@ public partial class accountdata : System.Web.UI.Page
     protected void Button17_Click(object sender, EventArgs e)
     {
         GridView2.Rows[2].Cells.Clear();
+    }
+
+    protected void Button16_Click3(object sender, EventArgs e)
+    {
+        int i = 0;
+        RadioButtonList Qualified;
+        TextBox Remark;
+
+        while (i<GridView2.Rows.Count)
+        {
+            Qualified =(RadioButtonList)GridView2.Rows[i].FindControl("RadioButtonList2");
+            if (string.IsNullOrEmpty(Qualified.SelectedValue.Trim()))//判斷每個RadiobuttonList是否完整勾選
+            {
+                Label38.Text = $"{GridView2.Rows[i].Cells[0].Text}合格欄位未完整勾選，請確認";
+                Label38.ForeColor = System.Drawing.Color.FromName("#FF5268");
+            }
+            i++;
+        }
     }
 }
