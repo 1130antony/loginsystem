@@ -16,9 +16,11 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="刪除按鈕" runat="server" Font-Size="Medium" OnClick="刪除按鈕_Click" Text="刪除" />
                 &nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="查詢按鈕" runat="server" Font-Size="Medium" OnClick="查詢按鈕_Click" Text="查詢" />
                 &nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="匯出按鈕" runat="server" Font-Size="Medium" OnClick="匯出按鈕_Click" Text="匯出" style="height: 26px" />
-                &nbsp;&nbsp;&nbsp;&nbsp;<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="Button16" runat="server" Text="測試Gridview" Enabled="False" OnClick="Button16_Click3" />
+                &nbsp;<asp:Label ID="Label38" runat="server"></asp:Label>
                 <br />
-                <asp:GridView ID="GridView2" runat="server" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" HorizontalAlign="Center" OnSelectedIndexChanged="GridView2_SelectedIndexChanged"  ItemStyle-HorizontalAlign="Center" Height="101px" OnPageIndexChanged="GridView2_PageIndexChanged" AllowPaging="True" EmptyDataText="0" Width="293px" OnRowDeleted="GridView2_RowDeleted" OnRowDeleting="GridView2_RowDeleting" DataKeyNames ="id" OnRowCommand="GridView2_RowCommand" OnRowCancelingEdit="GridView2_RowCancelingEdit" OnRowEditing="GridView2_RowEditing" EnableEventValidation="false" OnRowUpdating="GridView2_RowUpdating" AutoGenerateColumns="False">
+                <br />
+                <asp:GridView ID="GridView2" runat="server" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" HorizontalAlign="Center" OnSelectedIndexChanged="GridView2_SelectedIndexChanged"  ItemStyle-HorizontalAlign="Center" Height="101px" OnPageIndexChanged="GridView2_PageIndexChanged" AllowPaging="True" EmptyDataText="0" Width="293px" OnRowDeleted="GridView2_RowDeleted" OnRowDeleting="GridView2_RowDeleting" DataKeyNames ="id" OnRowCommand="GridView2_RowCommand" OnRowCancelingEdit="GridView2_RowCancelingEdit" OnRowEditing="GridView2_RowEditing" EnableEventValidation="false" OnRowUpdating="GridView2_RowUpdating">
                     <Columns>
                         
                         <asp:ButtonField CommandName="Select" Text="選取" >
@@ -31,7 +33,14 @@
                                 </asp:RadioButtonList>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="ProductId" HeaderText="項目" InsertVisible="False" ReadOnly="True" />
+                        <asp:TemplateField HeaderText="TestRadioButtonList">
+                            <ItemTemplate>
+                                <asp:RadioButtonList ID="RadioButtonList2" runat="server" RepeatDirection="Horizontal" >
+                                    <asp:ListItem>Y</asp:ListItem>
+                                    <asp:ListItem>N</asp:ListItem>
+                                </asp:RadioButtonList>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                     <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
                     <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
